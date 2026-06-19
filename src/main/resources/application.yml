@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: rate-limiter
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.data.redis: DEBUG
+
+rate-limiter:
+  plans:
+    premium_user:
+      capacity: 100
+      fill-rate: 10
+    default:
+      capacity: 3
+      fill-rate: 1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
